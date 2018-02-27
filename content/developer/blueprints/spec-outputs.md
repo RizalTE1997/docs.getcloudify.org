@@ -9,32 +9,32 @@ weight: 600
 
 `outputs` enable you to expose global aspects of a deployment. When deployed, a blueprint can expose specific outputs of that deployment - for example, an endpoint of a server or any other runtime or static information of a specific resource.
 
-{{% gsNote title="Note" %}}
-Beginning with [definitions version]({{< relref "blueprints/spec-versioning.md" >}}) `cloudify_dsl_1_3`, you can import `outputs` multiple times.
-{{% /gsNote %}}
+{{% note title="Note" %}}
+Beginning with [definitions version]({{< relref "developer/blueprints/spec-versioning.md" >}}) `cloudify_dsl_1_3`, you can import `outputs` multiple times.
+{{% /note %}}
 
 # Declaration
 
-{{< gsHighlight  yaml >}}
+{{< highlight  yaml >}}
 outputs:
   output1:
     ...
   output2:
     ...
-{{< /gsHighlight >}}
+{{< /highlight >}}
 
 # Schema
 
 Keyname     | Required | Type        | Description
 ----------- | -------- | ----        | -----------
 description | no       | description | An optional description for the output.
-value       | yes      | \<any\>     | The output value. May be anything from a simple value (e.g. port) to a complex value (e.g. hash with values). Output values can contain hard-coded values, [inputs]({{< relref "blueprints/spec-intrinsic-functions.md#get-input" >}}), [properties]({{< relref "blueprints/spec-intrinsic-functions.md#get-property" >}}) and [attributes]({{< relref "blueprints/spec-intrinsic-functions.md#get-attribute" >}}).
+value       | yes      | \<any\>     | The output value. May be anything from a simple value (e.g. port) to a complex value (e.g. hash with values). Output values can contain hard-coded values, [inputs]({{< relref "developer/blueprints/spec-intrinsic-functions.md#get-input" >}}), [properties]({{< relref "developer/blueprints/spec-intrinsic-functions.md#get-property" >}}) and [attributes]({{< relref "developer/blueprints/spec-intrinsic-functions.md#get-attribute" >}}).
 
 <br>
 
 # Example
 
-{{< gsHighlight  yaml >}}
+{{< highlight  yaml >}}
 tosca_definitions_version: cloudify_dsl_1_2
 
 imports:
@@ -54,14 +54,14 @@ outputs:
         value:
             ip: { get_attribute: [webserver_vm, ip] }
             port: { get_property: [webserver, port] }
-{{< /gsHighlight >}}
+{{< /highlight >}}
 
 # Reading Outputs
 You can view the outputs either by using the [CLI]({{< relref "cli/deployments.md" >}})
-{{< gsHighlight  bash  >}}
+{{< highlight  bash  >}}
 cfy deployments outputs -d DEPLOYMENT_ID
-{{< /gsHighlight >}}
+{{< /highlight >}}
 or by making a REST call
-{{< gsHighlight  bash  >}}
+{{< highlight  bash  >}}
 curl -XGET http://MANAGER_IP/deployments/<DEPLOYMENT_ID>/outputs
-{{< /gsHighlight >}}
+{{< /highlight >}}

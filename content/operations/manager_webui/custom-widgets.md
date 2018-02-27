@@ -20,7 +20,7 @@ A widget is made up of these files:
 
 * `widget.js` ‑ Holds the widget's definition (**Required**)
 * `widget.png` ‑ The preview image of the widget in the widgets catalog (**Required**)
-* `backend.js` - A widget backend that allows widget frontend code to use [backend services]({{< relref "manager_webui/custom-widgets.md#widget-backend" >}}) (**Optional**)
+* `backend.js` - A widget backend that allows widget frontend code to use [backend services]({{< relref "operations/manager_webui/custom-widgets.md#widget-backend" >}}) (**Optional**)
 * `widget.html` ‑ A widget template file that is relevant only when you are writing a widget using vanilla JavaScript with an HTML template (**Optional**)
 * `widget.css` ‑ The CSS file that the widget uses (**Optional**)
 
@@ -123,9 +123,9 @@ In addition to listed above, you can create your own configuration fields. Examp
         Stage.GenericConfig.SORT_ASCENDING_CONFIG(false)
     ]
 ```
-All the configuration fields possibilities can be found in `GenericField` component documentation (see [Widgets Components documentation]({{< relref "apis/widgets-components.html" >}})). 
+All the configuration fields possibilities can be found in `GenericField` component documentation (see [Widgets Components documentation]({{< relref "developer/apis/widgets-components.html" >}})). 
 
-Configuration fields values can be fetched in `render` method using `widget.configuration` object. See [Accessing data in render()]({{< relref "manager_webui/custom-widgets.md#accessing-data-in-render" >}}) for details.
+Configuration fields values can be fetched in `render` method using `widget.configuration` object. See [Accessing data in render()]({{< relref "operations/manager_webui/custom-widgets.md#accessing-data-in-render" >}}) for details.
 
 #### fetchUrl
 There are two primary ways of pulling data from remote sources: `fetchUrl` and `fetchData()`.
@@ -237,10 +237,10 @@ Called when the widget definition is loaded, which occurs after the system is lo
 #### render(widget, data, error, toolbox)
 Called each time that the widget needs to draw itself. This might occur when the page is loaded, widget data is changed, context data is changed, widget data is fetched, and so on. `render` parameters are:   
 
-* The [widget object]({{< relref "manager_webui/custom-widgets.md#widget-object" >}}) itself
+* The [widget object]({{< relref "operations/manager_webui/custom-widgets.md#widget-object" >}}) itself
 * The fetched data, either using `fetchUrl` or `fetchData`. The data is `null` if `fetchData` or `fetchUrl` is not specified. The data will also pass `null` to the `render` method until data is fetched. If you are expecting data, you can render a "loading" indicator.
 * The error if data fetching failed
-* The [toolbox object]({{< relref "manager_webui/custom-widgets.md#toolbox-object" >}}).
+* The [toolbox object]({{< relref "operations/manager_webui/custom-widgets.md#toolbox-object" >}}).
 
 `render()` is focal to the appearance of the widget as the return value of this function will be rendered to UI by React engine.
 As such it is important to understand how to build widgets. The following example illustrates the simplest usage:
@@ -288,7 +288,7 @@ Take a note of how the `KeyIndicator` component is imported into the widget. Fro
 Similarly, you can import multiple components in the same line, ie:
 `let {KeyIndicator, Checkmark} = Stage.Basic;`
 
-There is a number of components ready for use in the `Stage.Basic` library. See [Widgets Components documentation]({{< relref "apis/widgets-components.html" >}}) for details.
+There is a number of components ready for use in the `Stage.Basic` library. See [Widgets Components documentation]({{< relref "developer/apis/widgets-components.html" >}}) for details.
 
 ##### Accessing data in render()
 There can be several independent data sources for your widget. Two most commonly used are the `configuration` and `data` objects.
@@ -488,7 +488,7 @@ Please note that it is recommended to use `fetchData()` instead of `doGet(URL, p
 Same as `getExternal()`, but on a secured connection. All headers are appended with an 'Authentication-Token'.
 
 #### getWidgetBackend()
-Same as `getInternal()`, but it allows you to call previously defined widget backend endpoints (see [Widget backend]({{< relref "manager_webui/custom-widgets.md#widget-backend" >}}) section for details). 
+Same as `getInternal()`, but it allows you to call previously defined widget backend endpoints (see [Widget backend]({{< relref "operations/manager_webui/custom-widgets.md#widget-backend" >}}) section for details). 
 
 #### getNewManager(ip)
 Returns a manager object connected on the specified IP. May be needed in order to join a different manager (eg. for cluster joining).
@@ -704,7 +704,7 @@ where
 * `method` - string with HTTP endpoint method on which service will be registered,
 * `body` - function (`function(req, res, next, helper)`) to be called on request to this endpoint, where:
     * req, res, next - are part of middleware function (see [Using middleware @ ExpressJS](http://expressjs.com/en/guide/using-middleware.html) for details) 
-    * helper - JSON object containing [Helper services]({{< relref "manager_webui/custom-widgets.md#helper-services" >}}).
+    * helper - JSON object containing [Helper services]({{< relref "operations/manager_webui/custom-widgets.md#helper-services" >}}).
 
 ##### Helper services
 
@@ -751,7 +751,7 @@ where:
 
 #### Calling endpoints
 
-Previously defined endpoints can be accessed in widget's frontend using `toolbox.getWidgetBackend()` method (see [getWidgetBackend()]({{< relref "manager_webui/custom-widgets.md#getWidgetBackend()" >}}) for details).
+Previously defined endpoints can be accessed in widget's frontend using `toolbox.getWidgetBackend()` method (see [getWidgetBackend()]({{< relref "operations/manager_webui/custom-widgets.md#getWidgetBackend()" >}}) for details).
 
 Example of calling endpoint *status* with GET method `widget.js`:
 ```javascript

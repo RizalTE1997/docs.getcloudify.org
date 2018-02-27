@@ -43,7 +43,7 @@ Display events for an execution
 
 &nbsp;
 #### Example
-{{< gsHighlight  bash  >}}
+{{< highlight  bash  >}}
 $ cfy events list -e dcf2dc2f-dc4f-4036-85a6-e693196e6331
 ...
 
@@ -54,7 +54,7 @@ Listing events for execution id dcf2dc2f-dc4f-4036-85a6-e693196e6331 [include_lo
 Total events: 2
 
 ...
-{{< /gsHighlight >}}
+{{< /highlight >}}
 
 ### delete
 
@@ -75,7 +75,7 @@ Delete events attached to a deployment.
 &nbsp;
 #### Example
 
-{{< gsHighlight  bash  >}}
+{{< highlight  bash  >}}
 $ cfy events delete cloudify-nodecellar-example
 ...
 
@@ -84,4 +84,4 @@ Deleting events for deployment id cloudify-nodecellar-example [include_logs=True
 Deleted 344 events
 
 ...
-{{< /gsHighlight >}}
+{{< /highlight >}}
