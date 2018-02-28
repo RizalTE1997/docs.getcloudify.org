@@ -55,6 +55,6 @@ The visibility of executions is derived from the deployment’s one: executions 
 
 In the Cloudify UI, private resources are indicated with a red lock icon in the top right corner, as shown below.
 
-![Private Resources]({{< img "manager/private-resources-1.png" >}})
+![Private Resources]( /images/manager/private-resources-1.png )
 
 To upload or create a private resource from the user interface, click the grey lock icon in the top right of the upload/creation dialog box.
